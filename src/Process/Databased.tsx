@@ -1,9 +1,10 @@
-import {MongoClient, ServerApiVersion} from "mongodb";
+import {Collection, MongoClient, ServerApiVersion, WithId, Document as MongoDocument} from "mongodb";
 
 
 class Databased
 {
     private client: MongoClient;
+    private postsCollection: Collection | undefined;
     constructor(){
         this.client = new MongoClient(process.env.DATABASE_URI, {
             serverApi: {
@@ -20,22 +21,30 @@ class Databased
         try
         {
             await this.client.connect();
-            //send a ping to confirm a successful connection
-            await this.client.db("admin").command({ping: 1});
             console.log("Successfully connected to MongoDB!");
-            var hfdbgl = this.client.db("ElliesPosts").collection("Ellie💚");
-            console.log(this.client);
-            console.log(hfdbgl);
+
+            this.postsCollection = this.client.db("ElliesPosts").collection("Ellie💚");
+
         }
         catch (error)
         {
             console.log("Failed to connect to MongoDB:");
             console.error(error);
         }
-        finally
-        {
-            await this.client.close();
+    }
+
+    public async getPosts(): Promise<Array<WithId<MongoDocument>>>
+    {
+        if (!this.postsCollection) {
+            throw new Error("Posts collection not initialized");
         }
+
+        return await this.postsCollection.find().toArray();
+    }
+
+    public async dispose(): Promise<void>
+    {
+        await this.client.close();
     }
 }
 
