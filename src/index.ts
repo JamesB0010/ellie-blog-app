@@ -60,6 +60,4 @@ async function RetrieveDataFromDatabase() : Promise<void>
   await database.connect();  
 }
 
-console.log(process.env.TESTVALUE);
-
 RetrieveDataFromDatabase();
