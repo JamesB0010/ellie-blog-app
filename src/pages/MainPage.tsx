@@ -12,17 +12,23 @@ const MainPage = forwardRef((props, ref) => {
   const onUploadPostClick = async () =>
   {
     if (blogTitleRef.current.value.length === 0)
+    {
+      toast.error("Ruh-oh 🙈 Blog title cannot be empty");  
       return;
+    }
 
     if (blogContentsRef.current.value.length === 0)
+    {
+      toast.error("Ruh-oh 🙈 Blog contents cannot be empty");  
       return;
+    }
 
     await window.api.postBlog({
       title: blogTitleRef.current.value,
       content: blogContentsRef.current.value
     })
 
-    toast.success("Blog post uploaded successfully!");
+    toast.success(`Blog post: ${blogTitleRef.current.value}... uploaded successfully! 🥳`);
     clearFields();
   }
 
