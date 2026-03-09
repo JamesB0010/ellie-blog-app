@@ -1,14 +1,10 @@
 import React, {forwardRef} from "react";
 
-const PublishPost = forwardRef((props, ref) => {
+export interface PublishPostProps {
+    onClick: () => void;
+}
 
-    const onClick = () =>
-    {
-        window.api.postBlog({
-            title: "Hello from posting app!",
-            content: "This is my first post using the blog posting app"
-        });
-    }
+const PublishPost = forwardRef(({onClick}: PublishPostProps, ref) => {
 
     return (
         <div className = "publish-post-container section">

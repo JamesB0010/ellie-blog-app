@@ -1,10 +1,12 @@
-import React, {forwardRef} from 'react';
+import React, {forwardRef, ForwardedRef} from 'react';
 
-const BlogTitle = forwardRef((props, ref) => {
+const BlogTitle = forwardRef((props: unknown, ref: ForwardedRef<HTMLTextAreaElement>) => {
     return (
         <div className = "blog-title-container section">
             <h1>Blog Title</h1>
-            <textarea placeholder='Enter your blog title here...' />
+            <textarea
+                ref={ref}
+                placeholder='Enter your blog title here...' />
         </div>
     );
 });
