@@ -9,17 +9,31 @@ const MainPage = forwardRef((props, ref) => {
   const blogTitleRef = useRef<HTMLTextAreaElement | null>(null);
   const blogContentsRef = useRef<HTMLTextAreaElement | null>(null);
 
-  const onUploadPostClick = async () =>
+  const validateFields = (): [valid: boolean, errorMessage: string] =>
   {
+    let valid = true;
+
     if (blogTitleRef.current.value.length === 0)
     {
-      toast.error("Ruh-oh 🙈 Blog title cannot be empty");  
-      return;
+      valid = false;
+      return [valid, "Ruh-oh 🙈 Blog title cannot be empty"];
     }
 
     if (blogContentsRef.current.value.length === 0)
     {
-      toast.error("Ruh-oh 🙈 Blog contents cannot be empty");  
+      valid = false;
+      return [valid, "Ruh-oh 🙈 Blog contents cannot be empty"];
+    }
+
+    return [valid, ""];
+  }
+
+  const onUploadPostClick = async () =>
+  {
+    const [valid, errorMessage] = validateFields();
+    if (!valid)
+    {
+      toast.error(errorMessage);
       return;
     }
 
