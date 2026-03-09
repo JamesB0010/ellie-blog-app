@@ -1,0 +1,69 @@
+@import './fonts.scss';
+@import "./page-title.scss";
+@import "./blog-title.scss";
+@import "./blog-contents.scss";
+@import "./publish-post.scss";
+
+body {
+  font-family: lacythethree;
+  margin: auto;
+  //max-width: 38rem;
+  //padding: 2rem;
+  background-image: url("../images/background.jpg");
+  background-size:no-repeat center/cover center fixed;
+}
+
+h1 {
+  font-family: poti;
+}
+
+button{
+  font-family: lacythethree;
+}
+
+textarea{
+  font-family: lacythethree;
+}
+
+.boxesContainer {
+    background-image: url("../images/section-background.png");
+    min-width: 85%;
+    min-height: 70%;
+     border-width: 27px;
+     border-style: solid;
+     /* border-image: url(https://bwnxela.neocities.org/bords.png) 12 fill round; */
+     border-image-outset: 0.9;
+     border-image: url("../images/border.png") 30 round;
+     image-rendering: pixelated;
+     background-clip: padding-box;
+}
+
+.page-column-container
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0px;
+}
+
+.blog-title-contents-buffer{
+  height: 5%;
+}
+
+.blog-contents-publish-buffer{
+  height: 2%;
+}
+
+.end-buffer{
+  height: 5%;
+}
+.section {
+   background-image: url("../images/downloadmegadark.jpg");
+    border-style: solid;
+    margin: auto;
+     border: solid 5px #1c0e01be;
+    border-radius: 10px;
+}

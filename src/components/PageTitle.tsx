@@ -1,0 +1,17 @@
+import React, { forwardRef } from "react";
+import * as fairyBook from "../images/fairy-book.gif";
+
+const PageTitle = forwardRef((props, ref) => {
+    return (
+        <div className = "page-title-container">
+            <div className = "header-container">
+                <h1>💚* ELLIE'S BLOG POSTING APP *💚</h1>
+            </div>
+            <div className = "fairy-book-container">
+                <img src={fairyBook} alt={"cool fairy book"}/>
+            </div>
+        </div>
+    )
+});
+
+export default PageTitle;

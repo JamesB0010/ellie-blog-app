@@ -1,0 +1,14 @@
+.blog-contents-container {
+    width: 80%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    background-clip: padding-box;
+   
+
+    h1{
+        font-family: lacythethree;
+    }
+}

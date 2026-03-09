@@ -1,0 +1,15 @@
+.publish-post-container 
+{
+    width: 80%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../images/section-background.png");
+    border-image: url("../images/border.png");
+    border-image: url("../images/border.png") 30 round;
+    border-width: 27px;
+    border-style: solid;
+    background-clip: padding-box;
+}

@@ -1,0 +1,32 @@
+import type { Configuration } from 'webpack';
+
+import { rules } from './webpack.rules';
+import { plugins } from './webpack.plugins';
+
+rules.push({
+  test: /\.scss$/,
+  use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+});
+
+rules.push({
+  test: /\.(png|jpg|jpeg|gif|svg)$/i,
+  type: "asset/resource"
+})
+
+export const rendererConfig: Configuration = {
+  module: {
+    rules,
+  },
+  plugins,
+  resolve: {
+    extensions: ['.js', '.ts', '.jsx', '.tsx', '.css']
+  },
+  output: {
+    publicPath: './',
+  },
+  devServer: {
+    static: {
+      directory: './public',
+    },
+  },
+};
