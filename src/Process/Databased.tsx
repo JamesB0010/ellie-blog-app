@@ -1,4 +1,5 @@
 import {Collection, MongoClient, ServerApiVersion, WithId, Document as MongoDocument} from "mongodb";
+import { BlogPost } from "../Types/BlogPost";
 
 
 class Databased
@@ -40,6 +41,15 @@ class Databased
         }
 
         return await this.postsCollection.find().toArray();
+    }
+    
+    public async makePost(postData: BlogPost): Promise<void>
+    {
+        if (!this.postsCollection) {
+            throw new Error("Posts collection not initialized");
+        }
+
+        await this.postsCollection.insertOne(postData);
     }
 
     public async dispose(): Promise<void>

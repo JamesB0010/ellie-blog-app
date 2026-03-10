@@ -16,9 +16,11 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+let mainWindow: BrowserWindow | null = null;
+
 const createWindow = (): void => {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 1920,
     height: 1080,
     webPreferences: {
@@ -58,9 +60,17 @@ app.on('activate', () => {
 
 ipcMain.handle("post-blog", async (event: Electron.IpcMainInvokeEvent, postData: BlogPost) =>
 {
-  console.log("upload blog post");
-  console.log(postData);
-})
+  try{
+    mainWindow.webContents.send("start-blog-post-upload", postData.title);
+    await database.makePost(postData);
+    mainWindow.webContents.send("finish-blog-post-upload", postData.title);
+  }
+  catch
+  {
+    console.error("Failed to make post in database");
+    mainWindow.webContents.send("fail-blog-post-upload", postData.title);
+  }
+});
 
 let database: Databased | undefined = undefined;
 
