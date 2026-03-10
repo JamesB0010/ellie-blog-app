@@ -1,5 +1,5 @@
 import { BlogPost } from "./BlogPost";
-import { BlogPostUploadStateCallbackType } from "./IcpCommunication/IcpCommunicationTypes";
+import { BlogPostUploadStateCallbackType } from "./IcpCommunication/IcpCommunicationCallbackTypes";
 
 export {}
 
