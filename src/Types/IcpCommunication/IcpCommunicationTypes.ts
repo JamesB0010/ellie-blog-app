@@ -1,0 +1,1 @@
+export type BlogPostUploadStateCallbackType = (postTitle: string) => void;

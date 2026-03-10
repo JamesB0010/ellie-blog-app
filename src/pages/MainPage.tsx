@@ -4,52 +4,23 @@ import BlogTitle from '../components/BlogTitle';
 import BlogContents from '../components/BlogContents';
 import PublishPost from '../components/PublishPost';
 import { ToastContainer, toast } from 'react-toastify';
+import { useBlogPostStatusUpdates as useBlogPostStatusUpdates } from '../hooks/useBlogPostStatusUpdates';
+import { BLOG_TITLE_EMPTY_ERROR_MESSAGE, BLOG_CONTENTS_EMPTY_ERROR_MESSAGE } from '../constants/UploadBlogPostConstants';
 
 const MainPage = forwardRef((props, ref) => {
   const blogTitleRef = useRef<HTMLTextAreaElement | null>(null);
   const blogContentsRef = useRef<HTMLTextAreaElement | null>(null);
 
-  useEffect((() =>
+  const clearFields = () =>
   {
-    const unsubscribe = window.api.onBlogPostUploadStarted((title: string) =>{
-      const minimumPostUploadTime = 1000; // in milliseconds
-      const thisPostTitle = title;
-      toast.promise(new Promise<void>((resolve, reject) =>
-      {
-        const postStarted = Date.now();
+    if (blogTitleRef.current)
+      blogTitleRef.current.value = "";
 
-        window.api.onBlogPostUploadFinished((title: string) => {
-          if(title !== thisPostTitle)
-            return;
-
-          const delta = Date.now() - postStarted;
-          setTimeout(resolve, minimumPostUploadTime - delta);
-        });
-
-        window.api.onBlogPostUploadFailed((title: string) => {
-          if(title !== thisPostTitle)
-            return;
-
-          const delta = Date.now() - postStarted;
-          setTimeout(reject, minimumPostUploadTime - delta);
-        });
-      }), {
-        pending: `Uploading blog post: ${thisPostTitle} ... ⏳`,
-        success: `Blog post: ${thisPostTitle} uploaded successfully! 🥳`,
-        error: `Failed to upload blog post: ${thisPostTitle} 😢`
-      }, {
-        pauseOnHover: false,
-        pauseOnFocusLoss: false,
-      }).then(() => {
-        clearFields();
-      }).catch((e) =>{
-        console.log("Failed to upload blog post");
-        console.log(e);
-      });
-    });
-
-    return unsubscribe;
-  }), []);
+    if (blogContentsRef.current)
+      blogContentsRef.current.value = "";
+  }
+  
+  useBlogPostStatusUpdates(clearFields);
 
   const validateFields = (): [valid: boolean, errorMessage: string] =>
   {
@@ -58,13 +29,13 @@ const MainPage = forwardRef((props, ref) => {
     if (blogTitleRef.current.value.length === 0)
     {
       valid = false;
-      return [valid, "Ruh-oh 🙈 Blog title cannot be empty"];
+      return [valid, BLOG_TITLE_EMPTY_ERROR_MESSAGE];
     }
 
     if (blogContentsRef.current.value.length === 0)
     {
       valid = false;
-      return [valid, "Ruh-oh 🙈 Blog contents cannot be empty"];
+      return [valid, BLOG_CONTENTS_EMPTY_ERROR_MESSAGE];
     }
 
     return [valid, ""];
@@ -83,18 +54,7 @@ const MainPage = forwardRef((props, ref) => {
       title: blogTitleRef.current.value,
       content: blogContentsRef.current.value
     })
-
   }
-
-  const clearFields = () =>
-  {
-    if (blogTitleRef.current)
-      blogTitleRef.current.value = "";
-
-    if (blogContentsRef.current)
-      blogContentsRef.current.value = "";
-  }
-
     return (
       <>
         <ToastContainer />

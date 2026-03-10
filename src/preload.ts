@@ -3,37 +3,51 @@
 
 import { contextBridge, ipcRenderer} from 'electron';
 import { BlogPost } from './Types/BlogPost';
+import { IcpCommunicationMessages } from './Types/IcpCommunication/IcpCommunicationMessages';
+import { BlogPostUploadStateCallbackType } from './Types/IcpCommunication/IcpCommunicationTypes';
 
 contextBridge.exposeInMainWorld('api', {
     postBlog: (postData: BlogPost) => ipcRenderer.invoke("post-blog", postData),
 
-    onBlogPostUploadStarted: (callback: (title: string) => void) => {
-    const listener = (event: Electron.IpcRendererEvent, title: string) => callback(title);
+    onBlogPostUploadStarted: (callback: BlogPostUploadStateCallbackType) =>
+    {
+        const listener = (event: Electron.IpcRendererEvent, title: string) => 
+        {
+            callback(title);
+        };
 
-    ipcRenderer.on("start-blog-post-upload", listener);
-
-    return () => {
-        ipcRenderer.removeListener("start-blog-post-upload", listener);
-    };
-},
-
-    onBlogPostUploadFinished: (callback: (title: string) => void) => {
-        const listener = (event: Electron.IpcRendererEvent, title: string) => callback(title);
-
-        ipcRenderer.on("finish-blog-post-upload", listener);
+        ipcRenderer.on(IcpCommunicationMessages.StartBlogPostUpload, listener);
 
         return () => {
-            ipcRenderer.removeListener("finish-blog-post-upload", listener);
+            ipcRenderer.removeListener(IcpCommunicationMessages.StartBlogPostUpload, listener);
         };
     },
 
-    onBlogPostUploadFailed: (callback: (title: string) => void) => {
-        const listener = (event: Electron.IpcRendererEvent, title: string) => callback(title);
+    onBlogPostUploadFinished: (callback: BlogPostUploadStateCallbackType) =>
+    {
+        const listener = (event: Electron.IpcRendererEvent, title: string) =>
+        {
+            callback(title);
+        };
 
-        ipcRenderer.on("fail-blog-post-upload", listener);
+        ipcRenderer.on(IcpCommunicationMessages.FinishBlogPostUpload, listener);
 
         return () => {
-            ipcRenderer.removeListener("fail-blog-post-upload", listener);
+            ipcRenderer.removeListener(IcpCommunicationMessages.FinishBlogPostUpload, listener);
+        };
+    },
+
+    onBlogPostUploadFailed: (callback: BlogPostUploadStateCallbackType) =>
+    {
+        const listener = (event: Electron.IpcRendererEvent, title: string) =>
+        {
+            callback(title);
+        };
+
+        ipcRenderer.on(IcpCommunicationMessages.FailBlogPostUpload, listener);
+
+        return () => {
+            ipcRenderer.removeListener(IcpCommunicationMessages.FailBlogPostUpload, listener);
         };
     }
 });
