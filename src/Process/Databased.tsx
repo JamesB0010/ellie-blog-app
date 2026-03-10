@@ -6,6 +6,12 @@ class Databased
 {
     private client: MongoClient;
     private postsCollection: Collection | undefined;
+    private _connected = false;
+    public get connected()
+    {
+        return this._connected;
+    }
+
     constructor(){
         this.client = new MongoClient(process.env.DATABASE_URI, {
             serverApi: {
@@ -22,6 +28,7 @@ class Databased
         try
         {
             await this.client.connect();
+            this._connected = true;
             console.log("Successfully connected to MongoDB!");
 
             this.postsCollection = this.client.db("ElliesPosts").collection("Ellie💚");
@@ -29,6 +36,7 @@ class Databased
         }
         catch (error)
         {
+            this._connected = false;
             console.log("Failed to connect to MongoDB:");
             console.error(error);
         }
@@ -36,6 +44,9 @@ class Databased
 
     public async getPosts(): Promise<Array<WithId<MongoDocument>>>
     {
+        if (!this._connected)
+            await this.connect();
+
         if (!this.postsCollection) {
             throw new Error("Posts collection not initialized");
         }
