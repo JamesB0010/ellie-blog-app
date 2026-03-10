@@ -9,7 +9,7 @@ body {
   margin: auto;
   //max-width: 38rem;
   //padding: 2rem;
-  background-image: url("../images/background.jpg");
+  background-image: url("../assets/images/background.jpg");
   background-size:no-repeat center/cover center fixed;
 }
 
@@ -26,14 +26,14 @@ textarea{
 }
 
 .boxesContainer {
-    background-image: url("../images/section-background.png");
+    background-image: url("../assets/images/section-background.png");
     min-width: 85%;
     min-height: 70%;
      border-width: 27px;
      border-style: solid;
      /* border-image: url(https://bwnxela.neocities.org/bords.png) 12 fill round; */
      border-image-outset: 0.9;
-     border-image: url("../images/border.png") 30 round;
+     border-image: url("../assets/images/border.png") 30 round;
      image-rendering: pixelated;
      background-clip: padding-box;
 }
@@ -61,7 +61,7 @@ textarea{
   height: 5%;
 }
 .section {
-   background-image: url("../images/downloadmegadark.jpg");
+   background-image: url("../assets/images/downloadmegadark.jpg");
     border-style: solid;
     margin: auto;
      border: solid 5px #1c0e01be;

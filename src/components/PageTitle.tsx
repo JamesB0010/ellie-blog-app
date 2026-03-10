@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import fairyBook from "../images/fairy-book.gif";
+import fairyBook from "../assets/images/fairy-book.gif";
 
 const PageTitle = forwardRef(() => {
     return (

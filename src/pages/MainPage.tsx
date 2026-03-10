@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef} from 'react';
+import React, { forwardRef, useRef} from 'react';
 import PageTitle from '../components/PageTitle';
 import BlogTitle from '../components/BlogTitle';
 import BlogContents from '../components/BlogContents';
