@@ -122,8 +122,9 @@ ipcMain.handle("post-blog", async (event: Electron.IpcMainInvokeEvent, postData:
     await database.makePost(postData);
     mainWindow.webContents.send(IcpCommunicationMessages.FinishBlogPostUpload, postData.title);
   }
-  catch {
+  catch (error) {
     console.error("Failed to make post in database");
+    console.log(error);
     mainWindow.webContents.send(IcpCommunicationMessages.FailBlogPostUpload, postData.title);
   }
 });

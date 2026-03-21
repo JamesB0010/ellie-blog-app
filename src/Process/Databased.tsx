@@ -56,6 +56,9 @@ class Databased
     
     public async makePost(postData: BlogPost): Promise<void>
     {
+        if (!this._connected)
+            await this.connect();
+
         if (!this.postsCollection) {
             throw new Error("Posts collection not initialized");
         }
