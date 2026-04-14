@@ -1,6 +1,6 @@
 .blog-title-container {
     width: 80%;
-    height: 20%;
+    height: 35%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,4 +12,14 @@
         font-family: lacythethree;
         word-spacing: 1rem;
     }
+}
+.blog-title-container-inner {
+  margin: auto;
+  font-size: 1.15rem;
+  width: 80%;
+  height: 35%;
+  border: solid 1px #1c0e01be;
+  border-radius: 6px;
+  background-color: #edd49a84;
+ 
 }
