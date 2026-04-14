@@ -15,9 +15,8 @@ const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
     icon: "./LeaF-icon",
-    files: [
-      'package.json',
-      'production.env',
+    extraResource: [
+      'production.env'
     ],
   },
   rebuildConfig: {},
