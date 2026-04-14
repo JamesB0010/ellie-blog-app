@@ -1,5 +1,6 @@
 import {Collection, MongoClient, ServerApiVersion, WithId, Document as MongoDocument} from "mongodb";
 import { BlogPost } from "../types/BlogPost";
+import { config } from "../config";
 
 
 class Databased
@@ -13,7 +14,7 @@ class Databased
     }
 
     constructor(){
-        this.client = new MongoClient(process.env.DATABASE_URI ?? "", {
+        this.client = new MongoClient(config.databaseUri, {
             serverApi: {
                 version: ServerApiVersion.v1,
                 strict: true,
