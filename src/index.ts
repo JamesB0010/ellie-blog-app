@@ -1,6 +1,6 @@
 import './config';
 import { app, BrowserWindow, ipcMain, MenuItem } from 'electron';
-import { Databased } from './Process/Databased';
+import { Databased } from './process/Databased';
 import { WithId, Document as MongoDocument } from 'mongodb';
 import { BlogPost } from './types/BlogPost';
 import { IcpCommunicationMessages } from './types/IcpCommunication/IcpCommunicationMessages';
