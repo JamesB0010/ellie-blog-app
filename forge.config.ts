@@ -14,6 +14,10 @@ import { rendererConfig } from './webpack.renderer.config';
 const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
+    icon: "./LeaF-icon",
+    extraResource: [
+      'production.env'
+    ],
   },
   rebuildConfig: {},
   makers: [

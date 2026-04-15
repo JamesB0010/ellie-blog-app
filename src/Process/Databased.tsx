@@ -13,7 +13,7 @@ class Databased
     }
 
     constructor(){
-        this.client = new MongoClient(process.env.DATABASE_URI, {
+        this.client = new MongoClient(config.databaseUri, {
             serverApi: {
                 version: ServerApiVersion.v1,
                 strict: true,
