@@ -2,9 +2,9 @@
 // https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
 
 import { contextBridge, ipcRenderer} from 'electron';
-import { BlogPost } from './Types/BlogPost';
-import { IcpCommunicationMessages } from './Types/IcpCommunication/IcpCommunicationMessages';
-import { BlogPostUploadStateCallbackType } from './Types/IcpCommunication/IcpCommunicationCallbackTypes';
+import { BlogPost } from './types/BlogPost';
+import { IcpCommunicationMessages } from './types/IcpCommunication/IcpCommunicationMessages';
+import { BlogPostUploadStateCallbackType } from './types/IcpCommunication/IcpCommunicationCallbackTypes';
 
 contextBridge.exposeInMainWorld('api', {
     postBlog: (postData: BlogPost) => ipcRenderer.invoke("post-blog", postData),
