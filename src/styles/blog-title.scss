@@ -22,4 +22,15 @@ textarea {
     width: 80%;
     height: 30%;
     font-size: 1.5rem;
+    resize: none;
+    scrollbar-width: none;
+}
+
+textarea:focus
+{
+    outline: none;
+}
+
+#blogTitleTextArea {
+    height: 40%;
 }

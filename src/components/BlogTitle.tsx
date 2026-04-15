@@ -7,6 +7,7 @@ const BlogTitle = forwardRef((props: unknown, ref: ForwardedRef<HTMLTextAreaElem
             <h1>BLOG TITLE</h1>
             <textarea
                 ref={ref}
+                id='blogTitleTextArea'
                 placeholder='Enter your blog title here...' />
          </div> 
         </div>
