@@ -1,6 +1,7 @@
 .publish-post-container 
 {
-    width: 80%;
+    width: 95%;
+    height: 12%;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -12,4 +13,11 @@
     border-width: 27px;
     border-style: solid;
     background-clip: padding-box;
+}
+button {
+    background-color: #edd49a84;
+    width: 98%;
+    height: 70%;
+    border-radius: 6px;
+    font-size: 1.5rem;
 }

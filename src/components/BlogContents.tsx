@@ -4,10 +4,12 @@ const BlogContents = forwardRef((props: unknown, ref: ForwardedRef<HTMLTextAreaE
 {
     return (
         <div className = "blog-contents-container section">
-            <h1>Blog Contents</h1>
+         <div className="textInner">
+            <h1>BLOG CONTENTS</h1>
             <textarea
                 ref={ref}
                 placeholder='Enter your blog contents here...' />
+         </div>
         </div>
 
     );

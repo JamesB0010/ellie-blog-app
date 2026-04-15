@@ -1,14 +1,41 @@
 .blog-contents-container {
-    width: 80%;
-    height: 40%;
+    width: 95%;
+    height: 45%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: start;
     background-clip: padding-box;
-   
+     background-color: #edd49a84;
 
     h1{
-        font-family: lacythethree;
+        font-family: poti;
+        letter-spacing: 5px;
+        font-weight: lighter;
+        font-size: 4rem;
+        margin-top: 1%;   
+        margin-bottom: 0%;     
     }
+}
+textarea {
+    width: 100%;
+    height: 60%;
+    font-size: 1.4rem;
+    background-color: #edd49a00;
+    border-color: #edd49a00;
+    
+}
+
+& ::placeholder {
+    color: rgb(44, 44, 44);
+}
+.textInner {
+    background-color: #edd49a84;
+    width: 96%;
+    height: 100%;
+    margin: 1%;
+    border-radius: 6px;
+    border-color: brown;
+    padding: 0% 1%;
+    border: solid 1px #1c0e01be;
 }

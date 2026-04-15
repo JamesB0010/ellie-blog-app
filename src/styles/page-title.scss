@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 95%;
   height: 20%;
   position: relative;
 }
@@ -23,10 +23,11 @@
     border-radius: 20px 20px 0 0;
 
     h1{
-        font-size: 3.7rem;
+        font-size: 6rem;
         color: white;
-        letter-spacing: 20px;
-        min-height: 100%;
+        letter-spacing: 10px;
+        font-weight: lighter;
+        padding-right: 2%;
     }
 }
 
@@ -34,9 +35,9 @@
 {
     position: absolute;
     left: 0;
-    top: 50%;
-    width: 20%;
-    height: 40%;
+    top: 34%;
+    width: 13%;
+    height: 30%;
     display: flex;
     align-items: center;
     justify-content: center;

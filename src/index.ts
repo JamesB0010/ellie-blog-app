@@ -2,8 +2,8 @@ import dotenv from 'dotenv';
 import { app, BrowserWindow, ipcMain, MenuItem } from 'electron';
 import { Databased } from './Process/Databased';
 import { WithId, Document as MongoDocument } from 'mongodb';
-import { BlogPost } from './types/BlogPost';
-import { IcpCommunicationMessages } from './types/IcpCommunication/IcpCommunicationMessages';
+import { BlogPost } from './Types/BlogPost';
+import { IcpCommunicationMessages } from './Types/IcpCommunication/IcpCommunicationMessages';
 import { session, Menu } from "electron"
 
 dotenv.config({ path: './production.env' });

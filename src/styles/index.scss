@@ -9,7 +9,7 @@ body {
   margin: auto;
   //max-width: 38rem;
   //padding: 2rem;
-  background-image: url("../assets/images/background.jpg");
+  background-image: url("../assets/images/bgnew.jpg");
   background-size:no-repeat center/cover center fixed;
 }
 
@@ -26,9 +26,10 @@ textarea{
 }
 
 .boxesContainer {
+  padding-top: 1.5%;
     background-image: url("../assets/images/section-background.png");
     min-width: 85%;
-    min-height: 70%;
+    min-height: 65%;
      border-width: 27px;
      border-style: solid;
      /* border-image: url(https://bwnxela.neocities.org/bords.png) 12 fill round; */
@@ -36,8 +37,14 @@ textarea{
      border-image: url("../assets/images/border.png") 30 round;
      image-rendering: pixelated;
      background-clip: padding-box;
+     margin-top: 1%;
+    
 }
-
+.titleInner {
+  border: solid 1px #1c0e01be;
+  border-radius: 6px;
+  background-color: #edd49a84;
+}
 .page-column-container
 {
   display: flex;
@@ -50,11 +57,11 @@ textarea{
 }
 
 .blog-title-contents-buffer{
-  height: 5%;
+  height: 3%;
 }
 
 .blog-contents-publish-buffer{
-  height: 2%;
+  height: 3%;
 }
 
 .end-buffer{

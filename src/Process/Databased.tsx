@@ -1,5 +1,5 @@
 import {Collection, MongoClient, ServerApiVersion, WithId, Document as MongoDocument} from "mongodb";
-import { BlogPost } from "../types/BlogPost";
+import { BlogPost } from "../Types/BlogPost";
 
 
 class Databased
