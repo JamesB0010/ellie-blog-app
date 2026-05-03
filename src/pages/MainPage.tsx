@@ -26,13 +26,13 @@ const MainPage = forwardRef((props, ref) => {
   {
     let valid = true;
 
-    if (blogTitleRef.current.value.length === 0)
+    if (blogTitleRef.current?.value.length === 0)
     {
       valid = false;
       return [valid, BLOG_TITLE_EMPTY_ERROR_MESSAGE];
     }
 
-    if (blogContentsRef.current.value.length === 0)
+    if (blogContentsRef.current?.value.length === 0)
     {
       valid = false;
       return [valid, BLOG_CONTENTS_EMPTY_ERROR_MESSAGE];
@@ -50,10 +50,13 @@ const MainPage = forwardRef((props, ref) => {
       return;
     }
 
-    await window.api.postBlog({
-      title: blogTitleRef.current.value,
-      content: blogContentsRef.current.value
-    })
+    if (blogTitleRef.current && blogContentsRef.current)
+    {
+      await window.api.postBlog({
+         title: JSON.stringify(blogTitleRef.current.value),
+         content: JSON.stringify(blogContentsRef.current.value)
+      });
+    }
   }
     return (
       <>
